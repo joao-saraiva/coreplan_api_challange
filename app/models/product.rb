@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
 
-  has_one :product_information
+  has_one :product_information, dependent: :destroy
+
+  validates :name, :brand, presence: true
 
   accepts_nested_attributes_for :product_information
 
