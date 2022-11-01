@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   validates :email, :password, presence: true
+  validates :email, uniqueness: true
 
   before_create :encrypt_password
 
@@ -12,6 +13,7 @@ class User < ApplicationRecord
 
   def encrypt_password
     payload = { id: password }
+
     self.password = JWT.encode(payload, ENV["API_SECRET"], 'HS256')
   end
 end
