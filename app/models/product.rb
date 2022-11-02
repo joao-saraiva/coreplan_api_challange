@@ -9,9 +9,9 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_information
 
   enum category: {
-    cpu: 1,
-    mother_board: 2,
-    ram: 3,
-    graphic_card: 4
+    cpu: 0,
+    mother_board: 1,
+    ram: 2,
+    graphic_card: 3
   }
 end
