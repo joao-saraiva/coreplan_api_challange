@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProductInformation, type: :model do
-  it{ is_expected.to belong_to(:product) }
+  it{ is_expected.to belong_to(:product).required(true) }
 
   context "validate presence of cpu support if is a cpu" do
     before { allow(subject).to receive(:cpu?).and_return(true) }
