@@ -7,10 +7,26 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 cpus_attributes = [
-  {name: 'Core i5', brand: 'Intel', category: 'cpu'},
-  {name: 'Core i5', brand: 'Intel', category: 'cpu'},
-  {name: 'Ryzen 5', brand: 'AMD', category: 'cpu'},
-  {name: 'Ryzen 7', brand: 'AMD', category: 'cpu'},
+  {name: 'Core i5', brand: 'Intel', category: 'cpu',
+    product_information_attributes: {
+      cpu_support: 'intel'
+      }
+    }, #1
+  {name: 'Core i5', brand: 'Intel', category: 'cpu',
+    product_information_attributes: {
+      cpu_support: 'intel'
+      }
+    }, #2
+  {name: 'Ryzen 5', brand: 'AMD', category: 'cpu',
+    product_information_attributes: {
+      cpu_support: 'amd'
+      }
+    }, #3
+  {name: 'Ryzen 7', brand: 'AMD', category: 'cpu',
+    product_information_attributes: {
+      cpu_support: 'amd'
+      }
+    }, #4
 ]
 
 cpus_attributes.each do |cpu_attributes|
@@ -22,17 +38,17 @@ mother_boards_attributes = [
     product_information_attributes: {
     ram_slot: 2, max_ram: 16, onboard_graphics: false, cpu_support: 'intel'
     }
-  },
+  }, #5
   { name: 'Gigabyte Aorus', brand: 'Gigabyte', category: 'mother_board',
     product_information_attributes: {
     ram_slot: 2, max_ram: 16, onboard_graphics: false, cpu_support: 'amd'
     }
-  }, 
+  }, #6
   { name: 'ASRock Steel Legend', brand: 'ASRock', category: 'mother_board',
     product_information_attributes: {
     ram_slot: 4, max_ram: 64, onboard_graphics: true, cpu_support: 'amd_intel'
     }
-  }, 
+  },  #7
 ]
 
 mother_boards_attributes.each do |mother_board_attributes|
@@ -44,27 +60,27 @@ rams_attributes = [
     product_information_attributes: {
       gb_size: 4
       }
-  },
+  }, #8
   { name: 'Kingston Hiper X', brand: 'Kingston', category: 'ram',
     product_information_attributes: {
       gb_size: 8
       }
-  },
+  }, #9
   { name: 'Kingston Hiper X', brand: 'Kingston', category: 'ram',
     product_information_attributes: {
       gb_size: 16
       }
-  },
+  },#10
   { name: 'Kingston Hiper X', brand: 'Kingston', category: 'ram',
     product_information_attributes: {
       gb_size: 32
       }
-  },
+  }, #11
   { name: 'Kingston Hiper X', brand: 'Kingston', category: 'ram',
     product_information_attributes: {
       gb_size: 64
       }
-  },
+  }, #12
 ]
 
 rams_attributes.each do |ram_attributes|
@@ -76,17 +92,17 @@ graphic_cards_attributes = [
     product_information_attributes: {
       gb_size: 6
       }
-  },
+  }, #13
   { name: 'Asus ROG Strix Geforce RTX 3060 6GB', brand: 'ASUS', category: 'graphic_card',
     product_information_attributes: {
       gb_size: 6
       }
-  },
+  }, #14
   { name: 'Gigabyte Radeon RX 6600 XT EAGLE 8GB', brand: 'Gigabyte', category: 'graphic_card',
     product_information_attributes: {
       gb_size: 8
       }
-  },
+  }, #15
 ]
 
 graphic_cards_attributes.each do |graphic_card_attributes|

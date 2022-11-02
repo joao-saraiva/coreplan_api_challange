@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_many :order_products, dependent: :destroy
   has_many :products, through: :order_products
 
-  accepts_nested_attributes_for :order_products, reject_if: :all_blank?
+  accepts_nested_attributes_for :order_products, reject_if: :all_blank
 
   validate :should_have_cpu, :should_have_mother_board, :should_have_ram
   validate :should_have_graphic_cards, unless: proc { mother_board_has_graphic_cards? }

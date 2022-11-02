@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_order, only: %i[ show edit update destroy ]
 
   # GET /orders or /orders.json
@@ -22,14 +23,12 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
-    byebug
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to order_url(@order), notice: "Order was successfully created." }
         format.json { render :show, status: :created, location: @order }
       else
-        format.html { render :new, status: :unprocessable_entity }
+
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -39,10 +38,8 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
         format.json { render :show, status: :ok, location: @order }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
@@ -53,7 +50,6 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -67,12 +63,12 @@ class OrdersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def order_params
       params.require(:order).permit(:user_id, :total, :status, 
-        order_products_attributes: {
+        order_products_attributes: [
           :id,
           :order_id,
           :product_id,
           :quantity,
           :_destroy,
-      })
+      ])
     end
 end
