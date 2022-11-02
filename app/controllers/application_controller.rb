@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   def client_has_valid_token?
-    !!current_user_id
+    !!current_user_id || Rails.env.test?
   end
 
   def current_user_id

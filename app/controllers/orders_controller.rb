@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     respond_to do |format|
-      format.json { head :no_content }
+      format.json { head :no_content, status: :ok }
     end
   end
 
@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:user_id, :total, :status, 
+      params.require(:order).permit(:user_id, 
         order_products_attributes: [
           :id,
           :order_id,

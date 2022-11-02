@@ -13,21 +13,26 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/orders", type: :request do
-  
+
   # Order. As you add validations to Order, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryBot.attributes_for(:order, order_products_attributes: [
+      FactoryBot.attributes_for(:order_product),
+      FactoryBot.attributes_for(:order_product, :mother_board), 
+      FactoryBot.attributes_for(:order_product, :ram), 
+      FactoryBot.attributes_for(:order_product, :graphic_card)
+    ])
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryBot.attributes_for(:order, :complete_multiple_memories)
   }
 
   describe "GET /index" do
     it "renders a successful response" do
       Order.create! valid_attributes
-      get orders_url
+      get orders_url, as: :json
       expect(response).to be_successful
     end
   end
@@ -35,14 +40,14 @@ RSpec.describe "/orders", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       order = Order.create! valid_attributes
-      get order_url(order)
+      get order_url(order), as: :json
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_order_url
+      get new_order_url, as: :json
       expect(response).to be_successful
     end
   end
@@ -50,7 +55,7 @@ RSpec.describe "/orders", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       order = Order.create! valid_attributes
-      get edit_order_url(order)
+      get edit_order_url(order), as: :json
       expect(response).to be_successful
     end
   end
@@ -59,26 +64,21 @@ RSpec.describe "/orders", type: :request do
     context "with valid parameters" do
       it "creates a new Order" do
         expect {
-          post orders_url, params: { order: valid_attributes }
+          post orders_url,as: :json, params: { order: valid_attributes }
         }.to change(Order, :count).by(1)
-      end
-
-      it "redirects to the created order" do
-        post orders_url, params: { order: valid_attributes }
-        expect(response).to redirect_to(order_url(Order.last))
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Order" do
         expect {
-          post orders_url, params: { order: invalid_attributes }
+          post orders_url, as: :json, params: { order: invalid_attributes }
         }.to change(Order, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post orders_url, params: { order: invalid_attributes }
-        expect(response).to be_successful
+        post orders_url, as: :json, params: { order: invalid_attributes }
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -86,28 +86,27 @@ RSpec.describe "/orders", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryBot.attributes_for(:order, order_products_attributes: [
+          FactoryBot.attributes_for(:order_product, id: "1"),
+          FactoryBot.attributes_for(:order_product, :mother_board, id: "2"), 
+          FactoryBot.attributes_for(:order_product, :ram, id: "3"), 
+          FactoryBot.attributes_for(:order_product, :graphic_card, id: "4")
+        ])
       }
-
-      it "updates the requested order" do
-        order = Order.create! valid_attributes
-        patch order_url(order), params: { order: new_attributes }
-        order.reload
-        skip("Add assertions for updated state")
-      end
 
       it "redirects to the order" do
         order = Order.create! valid_attributes
-        patch order_url(order), params: { order: new_attributes }
+        patch order_url(order), as: :json, params: { order: new_attributes }
         order.reload
-        expect(response).to redirect_to(order_url(order))
+
+        expect(response).to be_successful
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         order = Order.create! valid_attributes
-        patch order_url(order), params: { order: invalid_attributes }
+        patch order_url(order), as: :json, params: { order: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -117,14 +116,14 @@ RSpec.describe "/orders", type: :request do
     it "destroys the requested order" do
       order = Order.create! valid_attributes
       expect {
-        delete order_url(order)
+        delete order_url(order), as: :json
       }.to change(Order, :count).by(-1)
     end
 
     it "redirects to the orders list" do
       order = Order.create! valid_attributes
-      delete order_url(order)
-      expect(response).to redirect_to(orders_url)
+      delete order_url(order), as: :json
+      expect(response).to be_successful
     end
   end
 end
