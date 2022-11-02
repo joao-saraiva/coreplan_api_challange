@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     rescue #JWT::VerificationError
       return nil
     end
-    payload["user_id"]
+    payload["id"]
   end
 
   def require_login
