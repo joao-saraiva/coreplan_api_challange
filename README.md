@@ -46,7 +46,9 @@ Requisitos que foram atendidos serão marcados com :heavy_check_mark: e os que n
 
 Primeiramente rode rails db:setup, para crias as tabelas e popular os dados iniciais, caso prefira você pode rodar rails db:create -> rails db:migrate -> rails db:seed.
 
-Na raiz do seu projeto crie o arquivo .env e dentor do arquivo coloque o seguinte texto API_SECRET='MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDV0KxWsLoYkx/L
+Na raiz do seu projeto crie o arquivo .env e dentro do arquivo coloque o seguinte texto:
+
+API_SECRET='MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDV0KxWsLoYkx/L
 u2l8Nc9xVT7FQTumGDHHxXNWpLNboZJOkUZh2rvNixdBul5neUhGNnox8ufF2+N6
 XekgnTe0r5zKI5cwojAbIKFfZXNGpTEn3bHxqM5NaIfLCyRuJ+d7rCvaAvCyboqX
 CfCMSsXMuLAKcQpf+qrtOEhMrn0HCrz/DHHlYxGyYEdkFvbM1NwD76Y5bogByYx9
