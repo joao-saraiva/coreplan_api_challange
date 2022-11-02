@@ -1,5 +1,6 @@
-class Order < ApplicationRecord
+# frozen_string_literal: true
 
+class Order < ApplicationRecord
   belongs_to :user, required: true
 
   has_many :order_products, dependent: :destroy
@@ -38,10 +39,12 @@ class Order < ApplicationRecord
   end
 
   def mother_board_has_graphic_cards?
-    mother_board.onboard_graphics? rescue false
+    mother_board.onboard_graphics?
+  rescue StandardError
+    false
   end
 
-  private 
+  private
 
   def should_have_cpu
     errors.add(:cpu, 'is required to complete your Order') if cpu.nil?
@@ -52,19 +55,25 @@ class Order < ApplicationRecord
   end
 
   def should_have_ram
-    errors.add(:ram, 'is required to complete your Order') if rams.empty? 
+    errors.add(:ram, 'is required to complete your Order') if rams.empty?
   end
 
   def should_have_graphic_cards
-    errors.add(:graphic_card, 'is required to complete your Order') if graphic_card.nil? 
+    errors.add(:graphic_card, 'is required to complete your Order') if graphic_card.nil?
   end
 
   def should_respect_max_ram
-    errors.add(:ram, "Your mother board can only have #{mother_board.max_ram} GB size") if rams.sum(&:gb_size) > mother_board.max_ram
+    return unless rams.sum(&:gb_size) > mother_board.max_ram
+
+    errors.add(:ram,
+               "Your mother board can only have #{mother_board.max_ram} GB size")
   end
 
   def should_respect_slot_memory_limit
-    errors.add(:ram, "Your mother board can only have #{mother_board.ram_slot} slots") if rams.size > mother_board.ram_slot
+    return unless rams.size > mother_board.ram_slot
+
+    errors.add(:ram,
+               "Your mother board can only have #{mother_board.ram_slot} slots")
   end
 
   def should_respect_cpu_support
@@ -72,6 +81,6 @@ class Order < ApplicationRecord
   end
 
   def should_have_only_one_graphic_card
-    errors.add(:graphic_card, "You can have only 1 graphic card") if order_products.select(&:graphic_card?).size >= 2
+    errors.add(:graphic_card, 'You can have only 1 graphic card') if order_products.select(&:graphic_card?).size >= 2
   end
 end

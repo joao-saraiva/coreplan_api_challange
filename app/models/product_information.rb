@@ -1,5 +1,6 @@
-class ProductInformation < ApplicationRecord
+# frozen_string_literal: true
 
+class ProductInformation < ApplicationRecord
   belongs_to :product, required: true
   delegate :ram?, :mother_board?, :graphic_card?, :cpu?, to: :product, allow_nil: true
 

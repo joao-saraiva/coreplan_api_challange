@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   private
 
   def hmac_secret
-    ENV["API_SECRET"]
+    ENV['API_SECRET']
   end
 
   def client_has_valid_token?
@@ -11,16 +13,16 @@ class ApplicationController < ActionController::Base
 
   def current_user_id
     begin
-      token = request.headers["Authorization"]
+      token = request.headers['Authorization']
       decoded_array = JWT.decode(token, hmac_secret, true, { algorithm: 'HS256' })
       payload = decoded_array.first
-    rescue #JWT::VerificationError
+    rescue StandardError # JWT::VerificationError
       return nil
     end
-    payload["id"]
+    payload['id']
   end
 
   def require_login
-    render json: {error: 'Unauthorized'}, status: :unauthorized if !client_has_valid_token?
+    render json: { error: 'Unauthorized' }, status: :unauthorized unless client_has_valid_token?
   end
 end

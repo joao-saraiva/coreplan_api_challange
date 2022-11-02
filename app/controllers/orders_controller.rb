@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   before_action :require_login
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[show edit update destroy]
 
   # GET /orders or /orders.json
   def index
@@ -10,8 +12,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1 or /orders/1.json
-  def show
-  end
+  def show; end
 
   # GET /orders/new
   def new
@@ -19,8 +20,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /orders or /orders.json
   def create
@@ -57,20 +57,21 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.require(:order).permit(:user_id, 
-        order_products_attributes: [
-          :id,
-          :order_id,
-          :product_id,
-          :quantity,
-          :_destroy,
-      ])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.require(:order).permit(:user_id,
+                                  order_products_attributes: %i[
+                                    id
+                                    order_id
+                                    product_id
+                                    quantity
+                                    _destroy
+                                  ])
+  end
 end

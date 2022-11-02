@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,45 +12,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_01_014911) do
-
-  create_table "order_products", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_221_101_014_911) do
+  create_table 'order_products', force: :cascade do |t|
+    t.integer 'order_id'
+    t.integer 'product_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'orders', force: :cascade do |t|
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "product_informations", force: :cascade do |t|
-    t.integer "ram_slot"
-    t.integer "max_ram"
-    t.boolean "onboard_graphics"
-    t.integer "cpu_support"
-    t.integer "product_id"
-    t.integer "gb_size"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'product_informations', force: :cascade do |t|
+    t.integer 'ram_slot'
+    t.integer 'max_ram'
+    t.boolean 'onboard_graphics'
+    t.integer 'cpu_support'
+    t.integer 'product_id'
+    t.integer 'gb_size'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "brand"
-    t.integer "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.string 'brand'
+    t.integer 'category'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email'
+    t.string 'password'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end

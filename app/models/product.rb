@@ -1,8 +1,10 @@
-class Product < ApplicationRecord
+# frozen_string_literal: true
 
+class Product < ApplicationRecord
   has_one :product_information, dependent: :destroy
 
-  delegate :amd_intel?, :cpu_support, :onboard_graphics?, :gb_size, :max_ram, :ram_slot, to: :product_information, allow_nil: true
+  delegate :amd_intel?, :cpu_support, :onboard_graphics?, :gb_size, :max_ram, :ram_slot, to: :product_information,
+                                                                                         allow_nil: true
 
   validates :name, :brand, presence: true
 

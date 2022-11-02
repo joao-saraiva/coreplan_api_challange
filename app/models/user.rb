@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :email, :password, presence: true
   validates :email, uniqueness: true
@@ -6,7 +8,7 @@ class User < ApplicationRecord
 
   def token
     payload = { id: id }
-    JWT.encode(payload, ENV["API_SECRET"], 'HS256')
+    JWT.encode(payload, ENV['API_SECRET'], 'HS256')
   end
 
   private
@@ -14,6 +16,6 @@ class User < ApplicationRecord
   def encrypt_password
     payload = { id: password }
 
-    self.password = JWT.encode(payload, ENV["API_SECRET"], 'HS256')
+    self.password = JWT.encode(payload, ENV['API_SECRET'], 'HS256')
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Be sure to restart your server when you modify this file.
 
 # Add new inflection rules using the following format. Inflections
@@ -10,4 +12,3 @@ end
 # These inflection rules are supported but not enabled by default:
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 # end
-
