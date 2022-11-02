@@ -29,3 +29,15 @@ não precisa especificá-las.
 # Requisitos
 
 Requisitos que foram atendidos serão marcados com :heavy_check_mark: e os que não foram atendidos com :heavy_multiplication_x:
+
+* :heavy_check_mark: O cliente monta sua máquina selecionando as peças disponíveis na loja e faz o seu pedido.
+* :heavy_check_mark: O servidor, por sua vez, valida esse pedido conforme as Restrições de Montagem
+* :heavy_check_mark: Sendo um pedido inválido, o servidor rejeita o pedido retornando os erros cometidos pelo cliente.
+* :heavy_check_mark: Sendo um pedido válido, o servidor cria o pedido, armazenando-o na base de dados da loja, e retorna suas informações ao cliente
+* :heavy_check_mark: autenticação/autorização
+* :heavy_check_mark: Usuário cadastrado e obrigatório em cada pedido
+* :heavy_check_mark: Testes Automatizados
+* :heavy_check_mark: Documentar a API
+* :heavy_check_mark: Criar endpoint para listar os todos os pedidos realizados, com opção para filtragem e/ou ordenação dos dados.
+* :heavy_multiplication_x: Dockerizar a aplicação.
+* :heavy_multiplication_x: Front-end Com react
