@@ -20,17 +20,17 @@ end
 mother_boards_attributes = [
   { name: 'Asus ROG', brand: 'ASUS', category: 'mother_board',
     product_information_attributes: {
-    ram_slot: 2, max_ram: 16, onboard_graphicis: false, cpu_support: 'intel'
+    ram_slot: 2, max_ram: 16, onboard_graphics: false, cpu_support: 'intel'
     }
   },
   { name: 'Gigabyte Aorus', brand: 'Gigabyte', category: 'mother_board',
     product_information_attributes: {
-    ram_slot: 2, max_ram: 16, onboard_graphicis: false, cpu_support: 'amd'
+    ram_slot: 2, max_ram: 16, onboard_graphics: false, cpu_support: 'amd'
     }
   }, 
   { name: 'ASRock Steel Legend', brand: 'ASRock', category: 'mother_board',
     product_information_attributes: {
-    ram_slot: 4, max_ram: 64, onboard_graphicis: true, cpu_support: 'amd_intel'
+    ram_slot: 4, max_ram: 64, onboard_graphics: true, cpu_support: 'amd_intel'
     }
   }, 
 ]

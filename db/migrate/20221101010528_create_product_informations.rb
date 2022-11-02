@@ -3,7 +3,7 @@ class CreateProductInformations < ActiveRecord::Migration[5.2]
     create_table :product_informations do |t|
       t.integer :ram_slot
       t.integer :max_ram
-      t.boolean :onboard_graphicis
+      t.boolean :onboard_graphics
       t.integer :cpu_support
       t.integer :product_id
       t.integer :gb_size

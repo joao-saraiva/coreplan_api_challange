@@ -38,7 +38,7 @@ class Order < ApplicationRecord
   end
 
   def mother_board_has_graphic_cards?
-    mother_board.onboard_graphicis? rescue false
+    mother_board.onboard_graphics? rescue false
   end
 
   private 

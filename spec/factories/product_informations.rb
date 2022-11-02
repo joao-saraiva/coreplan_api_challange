@@ -8,7 +8,7 @@ FactoryBot.define do
       cpu_support { "intel" }
       ram_slot { 2 }
       max_ram { 16 }
-      onboard_graphicis { false }
+      onboard_graphics { false }
     end
 
     trait :ram do 

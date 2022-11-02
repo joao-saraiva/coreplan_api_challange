@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2022_11_01_014911) do
   create_table "product_informations", force: :cascade do |t|
     t.integer "ram_slot"
     t.integer "max_ram"
-    t.boolean "onboard_graphicis"
+    t.boolean "onboard_graphics"
     t.integer "cpu_support"
     t.integer "product_id"
     t.integer "gb_size"

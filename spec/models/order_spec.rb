@@ -113,7 +113,7 @@ RSpec.describe Order, type: :model do
     context "when have a mother board" do 
       it "should return true when mother_board has onboard_graphics" do 
         order = FactoryBot.build(:order, :complete)
-        order.mother_board.product.product_information.update_attribute(:onboard_graphicis, true)
+        order.mother_board.product.product_information.update_attribute(:onboard_graphics, true)
 
         expect(order.mother_board_has_graphic_cards?).to be_truthy
       end
@@ -206,7 +206,7 @@ RSpec.describe Order, type: :model do
       it "is valid when have no graphic card but mother board have an onboard graphic card" do 
         order = FactoryBot.build(:order)
         mother_board = FactoryBot.create(:product, :mother_board)
-        mother_board.product_information.update_attribute(:onboard_graphicis, true)
+        mother_board.product_information.update_attribute(:onboard_graphics, true)
 
         order.order_products.build(product_id: mother_board.id)
         order.valid?
