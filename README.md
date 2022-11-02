@@ -93,7 +93,8 @@ O pedido contêm uma tabela aninhada a ele, portanto quando você for mandar os 
 	]
 }
 
-* Produtos
+# Produtos
+
 Segue a lista de product_id para você enviar pela a API: 
 
 |       ID      |    PRODUTO    |    CATEGORY   |
@@ -115,5 +116,8 @@ Segue a lista de product_id para você enviar pela a API:
 |       15      |  RX 6600 XT  |     GPU       |
 
 
+# Notas
+
+Caso você tenha algum problema com autenticação/autorização do usuário, você pode comentar o before_action :require_login
 
 
