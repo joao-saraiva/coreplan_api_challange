@@ -32,13 +32,13 @@ class Order < ApplicationRecord
   end
 
   def compatible_cpu?
-    return true if mother_board.amd_intel?
+    return false if mother_board.nil? || cpu.nil?
 
-    mother_board.cpu_support == cpu.cpu_support
+    mother_board.amd_intel? || mother_board.cpu_support == cpu.cpu_support
   end
 
   def mother_board_has_graphic_cards?
-    mother_board.onboard_graphicis? rescue true
+    mother_board.onboard_graphicis? rescue false
   end
 
   private 

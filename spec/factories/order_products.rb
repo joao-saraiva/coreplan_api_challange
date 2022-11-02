@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :order_product do
-    product_id { create(:product).id }
+    product_id { create(:product, :cpu).id }
     quantity { 1 }
 
     trait :mother_board do 
