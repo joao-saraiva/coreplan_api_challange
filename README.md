@@ -25,3 +25,7 @@ não precisa especificá-las.
 * Ram: A máquina deve ter pelo menos uma memória RAM. A quantidade total de memórias que podem ser escolhidas dependem da quantidade de slots de memória da placa mãe escolhida. A quantidade total de armazenamento (em GB) não deve superar o total de memória RAM suportado pela placa mãe.
 
 * Placa de Vídeo: É possível selecionar apenas uma placa de vídeo para compor a máquina. Se a placa mãe escolhida não possui vídeo integrado, o cliente deve selecionar obrigatoriamente uma placa de vídeo. Caso contrário, selecioná-la é opcional.
+
+# Requisitos
+
+Requisitos que foram atendidos serão marcados com :heavy_check_mark: e os que não foram atendidos com :heavy_multiplication_x:
