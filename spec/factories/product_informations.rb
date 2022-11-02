@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :product_information do
-    product { create(:product).id }
+    product_id { create(:product).id }
     cpu_support { "intel" }
 
     trait :mother_board do 

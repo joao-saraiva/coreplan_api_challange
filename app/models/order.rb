@@ -15,27 +15,20 @@ class Order < ApplicationRecord
   validate :should_respect_slot_memory_limit, if: proc { mother_board.present? }
   validate :should_respect_cpu_support, if: proc { mother_board.present? && cpu.present? }
 
-  enum status: {
-    created: 1,
-    confirmed: 2,
-    sent: 3,
-    delivered: 4 
-  }
-
   def cpu
-    @cpu ||= order_products.cpu.last
+    @cpu ||= order_products.detect(&:cpu?)
   end
 
   def mother_board
-    @mother_board ||= order_products.mother_board.last
+    @mother_board ||= order_products.detect(&:mother_board?)
   end
 
   def rams
-    @rams ||= order_products.rams
+    @rams ||= order_products.select(&:ram?)
   end
 
   def graphic_card
-    @graphic_card ||= order_products.graphic_card.last
+    @graphic_card ||= order_products.detect(&:graphic_card?)
   end
 
   def compatible_cpu?
@@ -51,7 +44,6 @@ class Order < ApplicationRecord
   private 
 
   def should_have_cpu
-    byebug
     errors.add(:cpu, 'is required to complete your Order') if cpu.nil?
   end
 
@@ -80,6 +72,6 @@ class Order < ApplicationRecord
   end
 
   def should_have_only_one_graphic_card
-    errors.add(:graphic_card, "Your mother board does not support #{cpu.cpu_support}") if order_products.graphic_card.empty?
+    errors.add(:graphic_card, "You can have only 1 graphic card") if order_products.select(&:graphic_card?).size >= 2
   end
 end
