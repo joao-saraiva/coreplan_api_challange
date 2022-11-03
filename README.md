@@ -83,8 +83,13 @@ A tabela de usuário é bem simples contendo apenas email e password, apos você
 
 # Pedido 
 
-Está é a tabela central da api, quando for fazer qualquer interação com ela crie um header com o seguintes valores {Authorization: TOKEN DO USUARIO}.
+Está é a tabela central da api, quando for fazer qualquer interação com ela crie um header com o seguintes valores:
+{Authorization:
+    TOKEN DO USUARIO
+}.
+
 O pedido contêm uma tabela aninhada a ele, portanto quando você for mandar os parametros vai precisar seguir o formato abaixo: 
+
 {
 	"user_id": 1,	
 	"order_products_attributes": [
