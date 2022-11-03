@@ -13,8 +13,6 @@ O cliente entra no site e pode selecionar as seguintes peças para montar o seu 
 * Placa Mãe
 * Memória RAM
 * Placa de vídeo
-As demais peças que compõem o computador serão selecionadas pela própria loja e o cliente
-não precisa especificá-las.
 
 # Validações
  
