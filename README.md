@@ -1,6 +1,6 @@
-# CORELAN API
+# COREPLAN API
 
-Está é uma api é uma solução para o desafio da CORELAN.
+Está é uma api é uma solução para o desafio da COREPLAN.
 
 # Cenário
 
